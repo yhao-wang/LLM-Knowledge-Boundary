@@ -5,6 +5,6 @@ wget --load-cookies /tmp/cookies.txt "https://drive.google.com/uc?export=downloa
 unzip source.zip && rm source.zip
 wget https://rocketqa.bj.bcebos.com/corpus/nq.tar.gz
 tar -zxvf 'nq.tar.gz' nq/para.txt nq/para.title.txt && mv nq/para.txt nq/para.title.txt source/ && rm -rf nq nq.tar.gz
-pip install -r requirements.txt
 mkdir qa prior post
 cd ..
+pip install -r requirements.txt
