@@ -22,15 +22,17 @@ ra_dict = {
 
 
 def get_args():
+
     parser = argparse.ArgumentParser()
- 
-    parser.add_argument('--source', type=str, default='source/nq.json')
+    parser.add_argument('--source', type=str, default='data/source/nq.json')
     parser.add_argument('--usechat', action='store_true')
     parser.add_argument('--type', type=str, choices=['qa', 'prior', 'post', 'generate'], default='qa')
-    parser.add_argument('--ra', type=str, default="dense")
-    parser.add_argument('--outfile', type=str, default='qa/chatgpt-nq-dense.json')
-    
+    parser.add_argument('--ra', type=str, default="none", choices=ra_dict.keys())
+    parser.add_argument('--outfile', type=str, default='data/qa/chatgpt-nq-none.json')   
     args = parser.parse_args()
+
+    if args.type == 'generate':
+        assert args.usechat and args.ra == 'none' , "You should use ChatGPT with no supporting documents to generate."
     args.ra = ra_dict[args.ra]
 
     return args

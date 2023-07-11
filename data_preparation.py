@@ -9,22 +9,22 @@ from utils.utils import has_answer
 
 source_dic = {
     'nq': {
-        'dense': 'source/nq-rocketqav2-top100',
-        'sparse': 'source/nq-bm25-top1000',
-        'qa': 'source/nq-qa',
-        'outfile': 'source/nq.json',
+        'dense': 'data/source/nq-rocketqav2-top100',
+        'sparse': 'data/source/nq-bm25-top1000',
+        'qa': 'data/source/nq-qa',
+        'outfile': 'data/source/nq.json',
     },
     'tq': {
-        'dense': 'source/tq-rocketqav2-top100',
-        'sparse': 'source/tq-bm25-top1000',
-        'qa': 'source/tq-qa',
-        'outfile': 'source/tq.json',
+        'dense': 'data/source/tq-rocketqav2-top100',
+        'sparse': 'data/source/tq-bm25-top1000',
+        'qa': 'data/source/tq-qa',
+        'outfile': 'data/source/tq.json',
     },
     'hq': {
-        'dense': 'source/hq-rocketqav2-top100',
-        'sparse': 'source/hq-bm25-top1000',
-        'qa': 'source/hq-qa',
-        'outfile': 'source/hq.json',
+        'dense': 'data/source/hq-rocketqav2-top100',
+        'sparse': 'data/source/hq-bm25-top1000',
+        'qa': 'data/source/hq-qa',
+        'outfile': 'data/source/hq.json',
     },
 }
 
@@ -49,7 +49,6 @@ def load_ql(res_dir, top=1000):
 def get_dall(ql, topk, d_all=set()):
     if topk == 0:
         topk = len(ql[0])
-    # 用于生成doc字典，返回所有需要的keys
     for cands in tqdm(ql):
         for did in cands[:topk]:
             d_all.add(did)
@@ -57,7 +56,6 @@ def get_dall(ql, topk, d_all=set()):
 
 
 def read_doc(doc_dir, d_all):
-    # 返回doc字典
     doc = {}
     file = open(doc_dir, 'r', encoding='utf-8')
     for line in tqdm(file.readlines()):
@@ -78,8 +76,6 @@ def get_llm(file):
         line = line.strip()
         p.append(line)
     return p
-
-# para = get_r(ql)
 
 
 def get_qa(filepath):

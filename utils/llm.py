@@ -5,7 +5,6 @@ from .utils import deal_answer, deal_post
 
 
 model2api = {
-    'codex': 'code-davinci-002',
     'gpt3': 'text-davinci-003',
     'chatgpt': 'gpt-3.5-turbo-0301'
 }
