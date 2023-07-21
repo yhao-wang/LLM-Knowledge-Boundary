@@ -120,8 +120,8 @@ def main():
     query, ans = get_qa(source_dic[args.dataset]['qa'])
     dall = get_dall(ql["v2"] + ql["bm25"], 100)
     dall = dall | drand
-    doc = read_doc(doc_dir="source/para.title.txt", d_all=dall)
-    title = read_doc(doc_dir="source/para.title.txt", d_all=dall)
+    doc = read_doc(doc_dir="data/source/para.title.txt", d_all=dall)
+    title = read_doc(doc_dir="data/source/para.title.txt", d_all=dall)
     f = open(source_dic[args.dataset]['outfile'], 'w', encoding='utf-8')
     k = 0
     add_dic = {}
