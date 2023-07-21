@@ -1,7 +1,7 @@
 import openai
 import time
 import os
-from .utils import deal_answer, deal_post
+from .utils import deal_answer, deal_judge, deal_post, str2paras
 
 
 model2api = {
@@ -78,14 +78,6 @@ def get_llm_result(prompt, chat, sample, deal_type):
                 res = None
                 break
         return res
-    
-
-    def str2paras(s):
-        paras = []
-        for text in s.split('\n'):
-            if text.strip() != '':
-                paras.append(": " + text)
-        return paras
 
 
     def request_process(prompt, chat, sample, deal_type):
@@ -94,16 +86,21 @@ def get_llm_result(prompt, chat, sample, deal_type):
         prediction = None
         prediction = res[0] if res is not None else None
         if deal_type == 'post':
-            sample['prompt'] = prompt
+            sample['post_prompt'] = prompt
             sample['Post'] = prediction
             sample['Post_Giveup'], sample['Post_True'] = deal_post(prediction)
-        elif deal_type == 'qa' or deal_type == 'prior':
-            sample['prompt'] = prompt
+        elif deal_type == 'qa':
+            sample['qa_prompt'] = prompt
             sample['Prediction'] = prediction
-            sample['Giveup'], sample['EM'], sample['F1'] = deal_answer(prediction, sample['reference'])
+            sample['EM'], sample['F1'] = deal_answer(prediction, sample['reference'])
+        elif deal_type == 'prior':
+            sample['prior_prompt'] = prompt
+            sample['Prior'] = prediction
+            sample['Giveup'] = deal_judge(prediction)
         elif deal_type == 'generate':
             sample['gen_prompt'] = prompt
-            sample['gen_ctxs'] = str2paras(prediction) if prediction is not None else None
+            sample['gen_response'] = prediction
+            sample['gen_ctxs'] = str2paras(prediction)
         return sample
     
     openai.api_key = os.environ.get("OPENAI_API_KEY")

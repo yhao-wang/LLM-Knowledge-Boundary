@@ -241,15 +241,20 @@ def F1_compute(answers, pred):
     return max([compute_f1(x, pred) for x in answers])
 
 
-def deal_answer(pred, answers):
-    giveup = False
+def deal_judge(pred):
     if pred is None:
-        return True, 0, 0
+        return True
     if has_answer(["unknown", "no specific answer", "not provide", "cannot answer", "no information provided", "no answer", "not contain", "no definitive answer"], pred):
-        giveup = True
+        return True
+    return False
+
+
+def deal_answer(pred, answers):
+    if pred is None:
+        return 0, 0
     if pred.lower().startswith("answer:"):
         pred = pred[7:]
-    return giveup, EM_compute(answers, pred), F1_compute(answers, pred)
+    return EM_compute(answers, pred), F1_compute(answers, pred)
         
 
 def deal_post(pred):
@@ -265,6 +270,16 @@ def deal_post(pred):
     else:
         giveup = True
     return giveup, istrue
+
+
+def str2paras(s):
+        if s is None:
+            return None
+        paras = []
+        for text in s.split('\n'):
+            if text.strip() != '':
+                paras.append(": " + text)
+        return paras
 
 
 if __name__ == "__main__":

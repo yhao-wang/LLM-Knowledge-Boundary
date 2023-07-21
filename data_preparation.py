@@ -95,7 +95,7 @@ def gettxt(t, d):
 def get_args():
     parser = argparse.ArgumentParser()
  
-    parser.add_argument('--dataset', '-d', type=str, choices=['nq', 'tq', 'hq'], default='nq')
+    parser.add_argument('--dataset', '-d', type=str, choices=['nq', 'tq', 'hq'], default='nq', help=r'Choose dataset from Natural Questions(nq), TriviaQA(tq) and HotpotQA(hq).')
     
     args = parser.parse_args()
 

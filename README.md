@@ -1,5 +1,7 @@
 # LLM-Knowledge-Boundary
 
+See our paper: [Investigating the Factual Knowledge Boundary of Large Language Models with Retrieval Augmentation](https://arxiv.org/abs/2307.11019)
+
 ## 🚀 Quick Start
 
 1. Preprocess data and install dependencies.
@@ -19,7 +21,7 @@
         --outfile=data/source/nq-chat.json
     ```
 
-## 🔍 Key Findings
+## 🔍 Conduct Experiments
 
 1. Question answering.
     ```bash
@@ -36,6 +38,7 @@
     OPENAI_API_KEY=[your api key] \
     python run_llm.py \
         --source=data/source/nq-chat.json \
+        --usechat \
         --type=prior \
         --ra=dense \
         --outfile=data/prior/nq-dense-prior.json
@@ -50,3 +53,16 @@
         --ra=sparse \
         --outfile=data/post/nq-sparse-post.json
     ```
+
+## 🌟 Acknowledgement
+
+Please cite the following paper if you find our code helpful.
+
+```bibtex
+@article{ren2023investigating,
+  title={Investigating the Factual Knowledge Boundary of Large Language Models with Retrieval Augmentation},
+  author={Ruiyang Ren, Yuhao Wang, Yingqi Qu, Wayne Xin Zhao, Jing Liu, Hao Tian, Hua Wu, Ji-Rong Wen, Haifeng Wang},
+  journal={arXiv preprint arXiv:2307.11019},
+  year={2023}
+}
+```
