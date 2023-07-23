@@ -1,6 +1,6 @@
 # LLM-Knowledge-Boundary
 
-See our paper: [Investigating the Factual Knowledge Boundary of Large Language Models with Retrieval Augmentation](https://arxiv.org/abs/2307.11019)
+See our paper: [Investigating the Factual Knowledge Boundary of Large Language Models with Retrieval Augmentation.](https://arxiv.org/abs/2307.11019)
 
 ## 🚀 Quick Start
 
@@ -33,7 +33,7 @@ See our paper: [Investigating the Factual Knowledge Boundary of Large Language M
         --ra=none \
         --outfile=data/qa/nq-none-qa.json
     ```
-2. Priori judging.
+2. Priori judgement.
     ```bash
     OPENAI_API_KEY=[your api key] \
     python run_llm.py \
@@ -43,7 +43,7 @@ See our paper: [Investigating the Factual Knowledge Boundary of Large Language M
         --ra=dense \
         --outfile=data/prior/nq-dense-prior.json
     ```
-3. Posteriori judging.
+3. Posteriori judgement.
     ```bash
     OPENAI_API_KEY=[your api key] \
     python run_llm.py \
