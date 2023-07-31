@@ -13,7 +13,7 @@ ra_dict = {
     'sparse': {'sparse_ctxs': 10},
     'dense': {'dense_ctxs': 10},
     'chatgpt': {'gen_ctxs': 100},
-    'sparse+dense': {'sparse_ctxs': 5, 'dense_ctxs': 5},
+    'sparse+dense': {'dense_ctxs': 5, 'sparse_ctxs': 5},
     'gold': {'gold_ctxs': 10},
     'strong': {'strong_ctxs': 10},
     'weak': {'weak_ctxs': 10},

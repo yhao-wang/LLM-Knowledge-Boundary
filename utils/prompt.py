@@ -36,7 +36,7 @@ def get_prompt(sample, args):
                 i += 1
         paras = '\n'.join(doc)
         prompt = prompt_dict[args.type]['ra']
-    tail = prompt_dict[args.type][tail] if not args.usechat else ""
+    tail = prompt_dict[args.type]['tail'] if not args.usechat else ""
     prediction = sample['Prediction'] if args.type == 'post' else ""
-    prompt = prompt.format(question=sample['question'], paras=paras, prediction=prediction)
+    prompt = prompt.format(question=sample['question'], paras=paras, prediction=prediction) + tail
     return prompt

@@ -61,7 +61,7 @@ Please cite the following paper if you find our code helpful.
 ```bibtex
 @article{ren2023investigating,
   title={Investigating the Factual Knowledge Boundary of Large Language Models with Retrieval Augmentation},
-  author={Ruiyang Ren, Yuhao Wang, Yingqi Qu, Wayne Xin Zhao, Jing Liu, Hao Tian, Hua Wu, Ji-Rong Wen, Haifeng Wang},
+  author={Ren, Ruiyang and Wang, Yuhao and Qu, Yingqi and Zhao, Wayne Xin and Liu, Jing and Tian, Hao and Wu, Hua and Wen, Ji-Rong and Wang, Haifeng},
   journal={arXiv preprint arXiv:2307.11019},
   year={2023}
 }
